@@ -555,5 +555,4 @@ if [[ -n "${WARP_TERMINAL}" ]] || command -v starship > /dev/null 2>&1; then
 fi
 
 # Success message
-echo "Git plugin loaded successfully for Warp + Starship environment"
-
+# echo "Git plugin loaded successfully for Warp + Starship environment"
