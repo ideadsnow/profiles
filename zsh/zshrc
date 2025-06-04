@@ -1,0 +1,49 @@
+setopt AUTO_CD AUTO_PUSHD HIST_IGNORE_DUPS
+autoload -Uz colors && colors
+
+# ------------------
+# starship and plugins
+# ------------------
+export ZSH_CONFIG_DIR=$HOME/.config/zsh
+
+# 加载自定义 aliases
+if [ -f $ZSH_CONFIG_DIR/aliases ]; then
+  source $ZSH_CONFIG_DIR/aliases
+fi
+
+# 加载自定义 plugins - 静默成功，错误时输出 (macOS兼容版本)
+load_zsh_plugins() {
+    local plugin_dir="${1:-$HOME/.config/zsh/plugins}"
+
+    [[ ! -d "$plugin_dir" ]] && {
+        # echo "Plugin directory not found: $plugin_dir" >&2
+        return 0
+    }
+
+    # macOS兼容：不使用 -z 参数，改用换行分隔和普通 sort
+    local files=($(find "$plugin_dir" -name "*.zsh" -type f 2>/dev/null | sort))
+
+    if [[ ${#files[@]} -eq 0 ]]; then
+        # echo "No .zsh files found in: $plugin_dir" >&2
+        return 0
+    fi
+
+    for file in "${files[@]}"; do
+        [[ -r "$file" ]] && {
+            source "$file" 2>/dev/null || echo "Error loading: $file" >&2
+        }
+    done
+}
+
+# 加载配置文件
+load_zsh_plugins
+
+# 语法高亮，使用 Warp 的场景下可以关闭
+# source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# zoxide 快速跳转
+eval "$(zoxide init zsh)"
+
+# starship launch!
+eval "$(starship init zsh)"
+
