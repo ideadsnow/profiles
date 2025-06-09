@@ -41,6 +41,9 @@ load_zsh_plugins
 # 语法高亮，使用 Warp 的场景下可以关闭
 # source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# fnm
+eval "$(fnm env --use-on-cd --shell zsh)"
+
 # zoxide 快速跳转
 eval "$(zoxide init zsh)"
 

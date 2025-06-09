@@ -2,16 +2,6 @@
 alias vim="nvim"
 alias vi="nvim"
 
-# nvm
-nvm()
-{
-  unfunction nvm
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-  nvm $@
-}
-
 # proxy
 proxy() {
     PROXY_ADDR="127.0.0.1"
@@ -50,30 +40,6 @@ alias ldot="eza -ld .* $EZA_ARGS"
 alias lD="eza -lD $EZA_ARGS"
 alias laD="eza -laD $EZA_ARGS"
 alias tree="eza -T --icons $EZA_ARGS"
-
-# git
-# alias g="git"
-# alias ga="git add"
-# alias gb="git branch"
-# alias gba="git branch --all"
-# alias gbd="git branch --delete"
-# alias gco="git checkout"
-# alias gcb="git checkout -b"
-# alias gcl="git clone --recurse-submodules"
-# alias gcmsg="git commit --message"
-# alias gst="git status"
-# alias gss="git status --short"
-# alias gsb="git status --short --branch"
-# alias gl="git pull"
-# alias gp="git push"
-# alias gr="git remote"
-# alias grv="git remote --verbose"
-# alias gra="git remote add"
-# alias glg="git log --stat"
-# alias glgg="git log --graph"
-# alias gsw="git switch"
-# alias gswc="git switch -c"
-# alias gswd="git switch develop"
 
 # navigate
 alias ..="cd .."
