@@ -1,6 +1,8 @@
 setopt AUTO_CD AUTO_PUSHD HIST_IGNORE_DUPS
 autoload -Uz colors && colors
 
+export EDITOR=nvim
+
 # ------------------
 # starship and plugins
 # ------------------
